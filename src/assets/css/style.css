@@ -1,0 +1,174 @@
+/*PALETA DE COLORES
+Ku Crimson: #e3170a
+Rich Black: #050505
+Dark Sienna: #32021f
+
+*/
+a,
+a:visited,
+a:active {
+    text-decoration: none;
+    text-emphasis: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+body {
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#050505+1,e3170a+73,32021f+100 */
+    background: #050505;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #050505 1%, #160a4d 73%, #32021f 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #050505 1%, #160a4d 73%, #32021f 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #050505 1%, #160a4d 73%, #32021f 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#050505', endColorstr='#32021f', GradientType=0);
+    /* IE6-9 */
+
+    font-family: ubuntu;
+}
+
+.navigationBar {
+    display: flex;
+    justify-content: right;
+
+}
+
+.navigationBar li {
+    line-height: 0.8em;
+    margin: 1%;
+}
+
+h1 {
+    color: #fff;
+    font-size: 64px;
+    letter-spacing: 2px;
+    margin-top: 80px;
+    text-align: center;
+}
+
+.content {
+    background: #fff;
+    max-width: 960px;
+    margin: 30px auto;
+    padding: 20px 30px;
+    border-radius: 10px 120px 10px 10px;
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+
+}
+
+.ulPosts {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    padding: 0;
+}
+
+.ulPosts li {
+    padding: 20px;
+    background: #f5f9f9;
+    font-size: 20px;
+    color: #555;
+    position: relative;
+    border-bottom: 1px solid #e6e6e6;
+    height: 4em;
+}
+
+.ulPosts li:nth-child(even) {
+    padding: 20px;
+    background: #f2f2f2;
+}
+
+.ulPosts li span {
+    display: block;
+}
+
+.ulPosts li span:nth-child(2) {
+    font-size: 16px;
+    margin-top: 6px;
+    color: #999;
+}
+
+.ulPosts li div {
+    position: absolute;
+    top: 0;
+    right: 0px;
+    background: rgba(255, 255, 255, 0.6);
+    width: 40px;
+    text-align: center;
+    padding: 10px 0;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.formWrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.inputForm {
+    border-radius: 2%;
+    width: 20em;
+    margin-bottom: 1%;
+    border: 0;
+    border-bottom: 1px solid rgb(146, 31, 31);
+    margin: 0 auto;
+    padding: 10px;
+    display: block;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.inputContent {
+
+    margin: 0 auto;
+    margin: 2% 0;
+    border-bottom: 1px solid #eee;
+    width: 50em;
+    padding: 10px;
+    display: block;
+    box-sizing: border-box;
+    font-size: 12px;
+}
+
+form input:focus {
+    outline: none;
+    border-bottom: 3px solid #88236f;
+    padding-bottom: 8px;
+    transition: all ease 0.2s;
+}
+
+
+
+button {
+    border: 0;
+    background: #fff;
+    border-radius: 10px;
+    padding: 13px;
+    width: 100%;
+    box-shadow: -1px 0px 1px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    font-family: ubuntu;
+    letter-spacing: 1px;
+    color: rgb(165, 79, 79);
+    cursor: pointer;
+    margin: 0 auto;
+    transition: all;
+
+}
+
+
+.formWrapper {
+    background: #88236f;
+    max-width: 960px;
+    margin: 30px auto;
+    padding: 20px 30px;
+    border-radius: 10px 120px 10px 10px;
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
+
+}

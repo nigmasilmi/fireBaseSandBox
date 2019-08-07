@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-firestore.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/assets/css/style.css">
+</head>
+
+<body>
+    <nav>
+        <ul class="navigationBar">
+            <li><a href="#/login">Login</a></li>
+            <li><a href="#/register">Registrarse</a></li>
+            <li><a href="#/perfil">Ir a mi perfil</a></li>
+            <li><a href="#/feed">Ver Feed</a></li>
+
+
+        </ul>
+    </nav>
+    <h1>The Wall</h1>
+
+    <div id="root">
+        <div class="content">
+            <div class="formWrapper">
+                <form class="contentForm" id="add-post-form">
+                    <!--En este input de autor el valor del nombre va a ser reemplazado por el nombre del usuario logueado-->
+                    <input class="inputForm" type="text" name="author" placeholder="nombreDelUsuarioLogueado">
+                    <select class="inputForm" name="categories">
+                        <option class="inputForm" value="eventos">Eventos</option>
+                        <option class="inputForm" value="seminarios">Seminarios</option>
+                        <option class="inputForm" value="busqueda">Busco Músicx</option>
+                    </select>
+                    <textarea class="inputContent" name="content" id="contentID" cols="30" rows="10"></textarea>
+                    <h4>Likes</h4><input type="text" name="likesNumber">
+                    <button type="submit">Publica</button>
+                </form>
+            </div class=ulPostsContainer>
+            <ul class="ulPosts" id="posts-list"></ul>
+
+            <div id="user-profile-form-Wrapper">
+                <form  id="user-profile-form">
+                    <input type="text" name="userName" placeholder="tu nombre">
+                    <input type="text" name="favoriteBand" placeholder="tu banda favorita">
+                    <input type="text" name="gender" placeholder="genero">
+                    <button type="submit">Envíalo</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAaoePfem2_a1pqxhXjYWXn9c4H3EiwYVo",
+            authDomain: "codeninjafirestore-tutorial.firebaseapp.com",
+            databaseURL: "https://codeninjafirestore-tutorial.firebaseio.com",
+            projectId: "codeninjafirestore-tutorial",
+            storageBucket: "codeninjafirestore-tutorial.appspot.com",
+            messagingSenderId: "147219312872",
+            appId: "1:147219312872:web:11745c2f43203fe5"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        db.settings = ({
+            timestampsInSnapshots: true
+        });
+    </script>
+    <script type="module" src="src/assets/js/app.js"></script>
+   
+    
+</body>
+
+</html>
