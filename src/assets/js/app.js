@@ -1,20 +1,14 @@
+// Routes
+import {
+    initRouter
+} from './route.js';
 
+let app = firebase.app();
+console.log("APP:", app);
 
+/* init será la función que llame a initRouter apenas cargue el sitio */
+const init = () => {
+    initRouter();
+};
 
-import {deletePost} from './deletePosts.js';
-import {retrievePosts} from './retrievePosts.js';
-import {createPost} from './createPost.js';
-import {createUserProfile} from './userProfile.js';
-
-retrievePosts();
-deletePost();
-createPost();
-createUserProfile();
-window.addEventListener('hashchange', (e)=>{
-    console.log(e);
-
-});
-
-
-
-
+window.addEventListener('load', init);

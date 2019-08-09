@@ -8,10 +8,11 @@ export const createUserProfile = () => {
             "name": profileForm.userName.value,
             "favoriteBand": profileForm.favoriteBand.value,
             "genero": profileForm.gender.value,
-           
+
         });
         //limpiamos el formulario luego de que el usuario pulse haga submit
-       // profileForm.userName.value = '';
-        //profileForm.favoriteBand.value = '';
+        profileForm.userName.value = '';
+        profileForm.favoriteBand.value = '';
+        profileForm.gender.value = '';
     });
 };
