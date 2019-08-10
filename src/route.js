@@ -1,19 +1,19 @@
 
 import {
     templateLogin
-} from './../views/templateLogin.js';
+} from './assets/views/templateLogin.js';
 
 import {
     templateCreate
-} from './../views/templateCreate.js';
+} from './assets/views/templateCreate.js';
 
 import {
     retrievePosts
-} from './../views/retrivePostsTemplate.js';
+} from './assets/views/retrivePostsTemplate.js';
 
 import {
     printPostForm, createPost
-} from './createPost.js';
+} from './assets/js/createPost.js';
 
 
 
