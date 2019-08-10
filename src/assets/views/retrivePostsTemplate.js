@@ -92,7 +92,7 @@ const retrieveEventPosts = (property, value) => {
 
 };
 /* Esto es un ejemplo didáctico, abran las consolas del browser para ver resultados */
-console.log('Aquí vamos a pedir los posts cuya propiedad "categoria" sea igual a "eventos"');
+//Aquí vamos a pedir los posts cuya propiedad "categoria" sea igual a "eventos"
 console.log(retrieveEventPosts('categoria', 'eventos'));
-console.log('Aquí vamos a pedir los posts cuya propiedad "autor" sea igual a "Pedrito"');
+//Aquí vamos a pedir los posts cuya propiedad "autor" sea igual a "Pedrito"
 console.log(retrieveEventPosts('autor', 'Pedrito'));
