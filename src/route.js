@@ -15,12 +15,14 @@ import {
     printPostForm
 } from './assets/views/createPostTemplate.js';
 
+import {
+    createEmptyList
+} from './assets/views/retrivePostsTemplate.js';
 
 
  
 /* changeRouter llama a la función que carga cada template */
 const changeRouter = (hash) => {
-    console.log(typeof (hash));
     console.log(hash);
     if (hash === '') {
         return showTemplate('#/create');
@@ -57,9 +59,11 @@ const showTemplate = (hash) => {
             containerRoot.appendChild(templateCreate());
             break;
         case 'feed':
+            createEmptyList();
             realTimeRetriever();
             break;
         case 'createPost':
+            createEmptyList();
             containerRoot.appendChild(printPostForm());
             break;
         default:

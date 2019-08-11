@@ -2,10 +2,16 @@
 import {
     renderPostInTemplate
 } from './../views/retrivePostsTemplate.js';
+
+import {
+    deleteConfirmation
+} from './../views/deleteConfirmTemplate.js';
+
+
 /* CREATE POST */
 
 export const createPost = () => {
-    // llamamos a la función que crea el formulario y lo pinta en el html 
+    // llamamos a la función que crea el formulario y lo pinta en el html (que es lo que trae el hilo hacia acá)
     // y luego si le ponemos a escuchar el evento submit para que tome lo que el usuario ingresó
     // y lo guarde como un objeto en la base de datos
     document.querySelector('#add-post-form').addEventListener('submit', (evt) => {
@@ -38,7 +44,7 @@ export const retrievePosts = () => {
     });
     //cargamos las funciones relacionadas para que estén disponibles cuando se crea la lista de posts
 
-    deletePost();
+    //deletePost();
 };
 
 /* RETRIEVE en TIEMPO REAL */
@@ -46,20 +52,18 @@ export const retrievePosts = () => {
 export const realTimeRetriever = () => {
     deletePost();
     db.collection('posts').onSnapshot(snapshot => {
+        let postList = document.querySelector('.ulPosts');
         let changes = snapshot.docChanges();
         changes.forEach(change => {
-            console.log(change.type);
+            //console.log(change);
+            //console.dir(change.doc);
+            console.log(change.doc.data());
             if (change.type === 'added') {
                 renderPostInTemplate(change.doc);
             } else if (change.type === 'removed') {
-                let postList = document.querySelector('.ulPosts');
-                console.log('entra en el else if');
-               // let deletedPost = postList.querySelector(`[data-id= "${change.doc.id}"]`);
-                let deletedPost = postList.querySelectorAll('[data-id=" + change.doc.id + "]');
-                console.log(`[data-id= "${change.doc.id}"]`);
-                console.log(deletedPost);
-               // postList.removeChild(deletedPost);
-               deletedPost.parentElement.style.backgroundColor = 'green';
+                let deletedPost = document.querySelector(`li[data-id="${change.doc.id}"]`);
+                postList.removeChild(deletedPost);
+                
             }
         });
     });
@@ -104,6 +108,8 @@ export const deletePost = () => {
     window.addEventListener('click', (evt) => {
         if (evt.target.className === 'cross') {
             evt.stopPropagation();
+            //validar la eliminación del post (better UX ;) )
+            deleteConfirmation();
             let clickedElement = evt.target;
             let parent = clickedElement.parentElement;
             let postIdClicked = parent.getAttribute('data-id');
@@ -116,4 +122,3 @@ export const deletePost = () => {
     });
 
 };
-

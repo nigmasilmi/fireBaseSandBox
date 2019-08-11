@@ -1,10 +1,14 @@
+/**** Función que crea la lista en el DOM  y la hace disponible para las funciones front-end */
+export const createEmptyList = () => {
+    let postList = document.createElement('ul');
+    postList.setAttribute('class', 'ulPosts');
+    document.getElementById('root').appendChild(postList);
+};
 
 /********** Función que hace render de los resultados para mostrarlos en el template ********/
 
 export const renderPostInTemplate = (post) => {
-    let postList = document.createElement('ul');
-    postList.setAttribute('class', 'ulPosts');
-    document.getElementById('root').appendChild(postList);
+    let postList = document.querySelector('.ulPosts');
 
     let liElement = document.createElement('li');
     /*le asignamos al elemento li un atributo llamado data-id que va a ser igual 
@@ -14,6 +18,7 @@ export const renderPostInTemplate = (post) => {
     let category = document.createElement('span');
     let content = document.createElement('span');
     let publicationDate = document.createElement('span');
+    let automaticDate = document.createElement('span');
     let likes = document.createElement('span');
     let deleteEx = document.createElement('div');
     deleteEx.setAttribute('class', 'cross');
@@ -23,6 +28,7 @@ export const renderPostInTemplate = (post) => {
     category.textContent = post.data().categoria;
     content.textContent = post.data().contenido;
     publicationDate.textContent = post.data().fechaPublic;
+    //automaticDate.textContent = post.data().
     deleteEx.textContent = 'x';
     likes.textContent = post.data().likes;
 
@@ -36,9 +42,7 @@ export const renderPostInTemplate = (post) => {
 
     /*ahora inyectamos lo creado en el elemento del DOM 
     que va a contener todo el resultado de la petición */
-    console.log(typeof(liElement));
+    console.log(typeof (liElement));
     postList.appendChild(liElement);
 
 };
-
-
