@@ -8,15 +8,16 @@ import {
 } from './assets/views/templateCreate.js';
 
 import {
-    retrievePosts
-} from './assets/views/retrivePostsTemplate.js';
+    retrievePosts, realTimeRetriever
+} from './assets/js/Posts-CRUD.js';
 
 import {
-    printPostForm, createPost
-} from './assets/js/createPost.js';
+    printPostForm
+} from './assets/views/createPostTemplate.js';
 
 
 
+ 
 /* changeRouter llama a la función que carga cada template */
 const changeRouter = (hash) => {
     console.log(typeof (hash));
@@ -56,11 +57,10 @@ const showTemplate = (hash) => {
             containerRoot.appendChild(templateCreate());
             break;
         case 'feed':
-            containerRoot.appendChild(retrievePosts());
+            realTimeRetriever();
             break;
         case 'createPost':
             containerRoot.appendChild(printPostForm());
-            createPost();
             break;
         default:
             containerRoot.innerHTML = `<h1>Error 404. La página que está solicitando no se encuentra disponible</h1>`;
