@@ -42,7 +42,7 @@ export const renderPostInTemplate = (post) => {
 
     /*ahora inyectamos lo creado en el elemento del DOM 
     que va a contener todo el resultado de la petición */
-    console.log(typeof (liElement));
+    //console.log(typeof (liElement));
     postList.appendChild(liElement);
 
 };

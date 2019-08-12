@@ -1,4 +1,3 @@
-
 import {
     templateLogin
 } from './assets/views/templateLogin.js';
@@ -8,7 +7,8 @@ import {
 } from './assets/views/templateCreate.js';
 
 import {
-    retrievePosts, realTimeRetriever
+    retrievePosts,
+    realTimeRetriever
 } from './assets/js/Posts-CRUD.js';
 
 import {
@@ -20,9 +20,9 @@ import {
 } from './assets/views/retrivePostsTemplate.js';
 
 
- 
+
 /* changeRouter llama a la función que carga cada template */
-const changeRouter = (hash) => {
+export const changeRouter = (hash) => {
     console.log(hash);
     if (hash === '') {
         return showTemplate('#/create');
@@ -33,8 +33,10 @@ const changeRouter = (hash) => {
     if (hash === '#/login') {
         return showTemplate(hash);
     }
-    
+
     if (hash === '#/feed') {
+        const containerRoot = document.getElementById('root');
+        containerRoot.innerHTML = '';
         return showTemplate(hash);
     }
 
@@ -45,7 +47,7 @@ const changeRouter = (hash) => {
 };
 
 // Función que determina qué template se inyecta en el index.html
-const showTemplate = (hash) => {
+export const showTemplate = (hash) => {
     const router = hash.substring(2);
     const containerRoot = document.getElementById('root');
     containerRoot.innerHTML = '';
@@ -59,6 +61,7 @@ const showTemplate = (hash) => {
             containerRoot.appendChild(templateCreate());
             break;
         case 'feed':
+            console.log('entra al case feed');
             createEmptyList();
             realTimeRetriever();
             break;
@@ -67,7 +70,7 @@ const showTemplate = (hash) => {
             containerRoot.appendChild(printPostForm());
             break;
         default:
-            containerRoot.innerHTML = `<h1>Error 404. La página que está solicitando no se encuentra disponible</h1>`;
+            containerRoot.innerHTML = `<h2>Error 404. La página que está solicitando no se encuentra disponible</h2>`;
     }
 };
 

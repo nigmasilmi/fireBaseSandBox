@@ -4,8 +4,17 @@ import {
 } from './../views/retrivePostsTemplate.js';
 
 import {
-    deleteConfirmation
+    deleteConfiTemplate
 } from './../views/deleteConfirmTemplate.js';
+
+import {
+    publicationSuccess
+} from './../views/publicationSuccessTemplate.js';
+
+import {
+    changeRouter
+} from './../../route.js';
+
 
 
 /* CREATE POST */
@@ -25,9 +34,16 @@ export const createPost = () => {
             "fechaPublic": postForm.publicDate.value,
             "likes": 0
         });
-        //limpiamos el formulario luego de que el usuario pulse haga submit
+        //borramos de pantalla el formulario y mostramos el popUp de éxito de creación del post
         postForm.author.value = '';
         postForm.content.value = '';
+        document.querySelector('.formWrapper').remove();
+        publicationSuccess();
+        //escuchamos cuando el usuario haga click a la "x" y le redirigimos al feed donde estará su post publicado
+        document.querySelector('#closeIt').addEventListener('click', (event)=>{
+            document.querySelector('#successWrap').remove();
+            changeRouter('#/feed');
+        });
     });
 };
 
@@ -42,9 +58,7 @@ export const retrievePosts = () => {
 
         });
     });
-    //cargamos las funciones relacionadas para que estén disponibles cuando se crea la lista de posts
-
-    //deletePost();
+  
 };
 
 /* RETRIEVE en TIEMPO REAL */
@@ -55,15 +69,14 @@ export const realTimeRetriever = () => {
         let postList = document.querySelector('.ulPosts');
         let changes = snapshot.docChanges();
         changes.forEach(change => {
-            //console.log(change);
-            //console.dir(change.doc);
-            console.log(change.doc.data());
+            //console.log(change.doc.data());
             if (change.type === 'added') {
                 renderPostInTemplate(change.doc);
             } else if (change.type === 'removed') {
                 let deletedPost = document.querySelector(`li[data-id="${change.doc.id}"]`);
+               // deletedPost.remove();
                 postList.removeChild(deletedPost);
-                
+
             }
         });
     });
@@ -108,17 +121,34 @@ export const deletePost = () => {
     window.addEventListener('click', (evt) => {
         if (evt.target.className === 'cross') {
             evt.stopPropagation();
-            //validar la eliminación del post (better UX ;) )
-            deleteConfirmation();
             let clickedElement = evt.target;
             let parent = clickedElement.parentElement;
             let postIdClicked = parent.getAttribute('data-id');
-
-            /*seleccionamos el doc (entrada/post/objeto) con el id de interés y le aplicamos
-             el método de borrar entradas de firestore llamado "delete" */
-            db.collection('posts').doc(postIdClicked).delete();
-
+            deleteConfiTemplate();
+            console.log('postIdClicked is alive and is ', postIdClicked);
+            // btnClicked();
+            // return postIdClicked;
+            document.querySelector('.popUp').addEventListener('click', (e) => {
+                console.log(e.target);
+                const btn = e.target.id;
+                if (e.target.id == "deleteEx" || e.target.id == "regreted") {
+                    console.log('entra al if', e.target.id);
+                    if (btn == 'deleteEx') {
+                        console.log('ha hecho click en deleteEx');
+                        db.collection('posts').doc(postIdClicked).delete();
+                        let popUp = document.querySelector('.popUp');
+                        popUp.remove();
+                        //document.querySelector('#confiWrap').removeChild('.popUp');
+                    } else if (btn == 'regreted') {
+                        //let daddy = document.querySelector('#confiWrap');
+                        //daddy.removeChild(daddy.firstChild);
+                        let popUp = document.querySelector('.popUp');
+                        popUp.remove();
+                    } else {
+                        console.log('ha ocurrido un error');
+                    }
+                }
+            });
         }
     });
-
 };
