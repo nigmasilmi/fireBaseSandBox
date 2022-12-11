@@ -8,7 +8,7 @@
     "babel-jest": "^24.8.0",
     "eslint": "^6.1.0",
     "eslint-plugin-jest": "^22.14.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "gh-pages": "^2.1.0",
     "htmlhint": "^0.11.0",
     "i": "^0.3.6",
